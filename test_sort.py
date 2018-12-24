@@ -11,6 +11,14 @@ def test_sort(sort_function):
     ]
 
     for index, test in enumerate(tests):
-        print(f'Testing {index}: {test}')
+        print('-' * 20)
+        print(f'TEST {index}')
+        print(f'input: {test}')
         python_sort = sorted(test)
-        assert python_sort == sort_function(test)
+        result = sort_function(test)
+        try:
+            assert python_sort == result
+        except AssertionError:
+            print(f'*** FAIL!: {result}')
+            break
+        print(f'result: {result}')
